@@ -18,18 +18,16 @@
       ></b-carousel-slide>
       <b-carousel-slide
         class="sliderImg"
-        caption="First Slide"
+        caption="Second Slide"
         text="lorem lalljdkasfkh sjahfa jhsafja"
         img-src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/a015-helenal-104.jpg?dl=image-from-rawpixel-id-437363-jpeg.jpg&dpi=300&ixlib=php-3.1.0&w=1200&s=de981ace0ff271b316af113c1ce1fadf"
       ></b-carousel-slide>
       <b-carousel-slide
         class="sliderImg"
-        caption="First Slide"
+        caption="Final Slide"
         text="lorem lalljdkasfkh sjahfa jhsafja"
         img-src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/322-ted9122-x3-eye.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=136d553a20cfdda2c788a3dc781a7daa"
-      >
-        <b-button size="sm" class="btn-light">Try it now</b-button>
-      </b-carousel-slide>
+      ></b-carousel-slide>
     </b-carousel>
   </div>
 </template>
