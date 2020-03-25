@@ -10,6 +10,11 @@ import vueRouter from 'vue-router'
 import router from './router'
 import vWow from 'v-wow'
 import firebase from 'firebase'
+import firebaseConfig from './FBconfig'
+import {
+    eventBus
+} from './eventBus'
+
 
 Vue.use(vWow);
 Vue.use(BootstrapVue)
@@ -18,34 +23,10 @@ Vue.use(vueRouter)
 
 Vue.config.productionTip = false
 
-export const eventBus = new Vue({
-    data() {
-        return {
-            isLoggedIn: null
-        }
-    },
-
-    watch: {
-        isLoggedIn() {
-            this.$emit("statusChange", this.isLoggedIn);
-        }
-    }
-});
 
 
 
-//firebase config settings //
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBo7JcQzAh6co3i4hLy1JvqOwp-leUxpPw",
-    authDomain: "the-playlist-271104.firebaseapp.com",
-    databaseURL: "https://the-playlist-271104.firebaseio.com",
-    projectId: "the-playlist-271104",
-    storageBucket: "the-playlist-271104.appspot.com",
-    messagingSenderId: "1008335072180",
-    appId: "1:1008335072180:web:a176e9496fbe57c61660e1",
-    measurementId: "G-TJ86VWHQFS"
-};
 
 
 new Vue({
@@ -54,14 +35,14 @@ new Vue({
         firebase.initializeApp(firebaseConfig);
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                this.$router.push("/dashboard");
+                eventBus.user = user;
                 eventBus.isLoggedIn = true;
+                this.$router.push("/dashboard");
             } else {
-                this.$router.push("/");
                 eventBus.isLoggedIn = false;
+                this.$router.push("/");
             }
         });
     },
-
     render: h => h(App),
 }).$mount('#app')

@@ -1,7 +1,8 @@
 import vueRouter from 'vue-router'
 import homePage from './components/homePage'
 import dashboard from './components/dashboard'
-
+import host from './components/dashboard/host'
+import join from './components/dashboard/join'
 
 const router = new vueRouter({
     routes: [{
@@ -12,8 +13,19 @@ const router = new vueRouter({
 
         {
             path: '/dashboard',
-            name: 'Dashboard',
-            component: dashboard
+            name: 'dashboard',
+            component: dashboard,
+            children: [{
+                    path: 'host',
+                    name: 'host',
+                    component: host
+                },
+                {
+                    path: 'join',
+                    name: 'join',
+                    component: join
+                }
+            ]
         }
 
     ],

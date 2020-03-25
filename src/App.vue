@@ -7,7 +7,7 @@
 
 <script>
 import appNav from "./components/appNav";
-import { eventBus } from "./main";
+import { eventBus } from "./eventBus";
 
 export default {
   name: "App",

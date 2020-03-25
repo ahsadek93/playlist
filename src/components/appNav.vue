@@ -1,5 +1,5 @@
 <template>
-  <b-navbar sticky class="bg-light position-absolute w-100">
+  <b-navbar sticky class="bg-light" :class="{ 'position-absolute w-100' : !isLoggedIn }">
     <b-navbar-brand v-if="!isLoggedIn" class="mr-auto">
       <router-link to="/">ThePlayList</router-link>
     </b-navbar-brand>
@@ -17,7 +17,7 @@
 <script>
 var provider = new firebase.auth.GoogleAuthProvider();
 
-import { eventBus } from "../main";
+import { eventBus } from "../eventBus";
 import firebase from "firebase";
 
 export default {
@@ -33,6 +33,7 @@ export default {
     eventBus.$on("statusChange", data => {
       this.isLoggedIn = data;
     });
+    this.logOut = eventBus.logOut;
   },
 
   methods: {
@@ -49,18 +50,7 @@ export default {
         });
     },
 
-    logOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(function() {
-          this.$router.push("/");
-          this.isLoggedIn = false;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
+    logOut() {}
   },
 
   watch: {
